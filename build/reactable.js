@@ -248,6 +248,13 @@
                 className: this.props.className,
                 onClick: this.handleClick
             };
+            
+            var props = this.props;
+            Object.keys(props).forEach(function(prop){
+                if (prop.match(/^data-.*$/)) {
+                    tdProps[prop] = props[prop];
+                }
+            });
 
             // Attach any properties on the column to this Td object to allow things like custom event handlers
             if (typeof(this.props.column) === 'object') {
